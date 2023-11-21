@@ -1,21 +1,33 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import {auth, googleProvider} from '../../config/firebase-config'
 import {createUserWithEmailAndPassword, signInWithPopup, signOut} from 'firebase/auth'
 import { FaGoogle } from "react-icons/fa";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirm, setConfirm] = useState("");
+    const [match, setMatch] = useState(true);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        console.log(email)
+        console.log(password)
+        console.log(confirm)
+    }, [email,password,confirm])
 
     const signUp = async () => {
         try{
             if (password === confirm){
                 await createUserWithEmailAndPassword(auth, email, password);
+                navigate('/newuser')
+            } else {
+                setMatch(false)
             }
         } catch (err) {
-            console.log('error')
+            console.error(err.message)
         }
     };
 
@@ -27,9 +39,16 @@ function Signup() {
         }
     }
 
+    const back = () => {
+        setTimeout(function() {
+            navigate('/')
+          }, 100);
+    }
+
     return (
-        <article className='flex w-screen min-h-screen justify-center items-center bg-tan overflow-scroll'>
-            <div className='flex flex-col p-10 items-center min-h-[600px] h-[65vh] xl:w-1/3 lg:w-1/2 md:w-1/2 sm:w-2/3 w-5/6 gap-4 border-black border-2 rounded-lg shadow-bigcard bg-stone-50 overflow-y-auto'>
+        <article className='flex w-screen min-h-screen justify-center py-10 items-center bg-tan overflow-scroll'>
+            <div className='flex flex-col relative p-10 items-center min-h-[600px] h-[65vh] xl:w-1/3 lg:w-1/2 md:w-1/2 sm:w-2/3 w-5/6 gap-4 border-black border-2 rounded-xl shadow-bigcard bg-stone-50 overflow-visible'>
+            <button onClick={back} className='absolute w-12 h-12 rounded-full bg-red-500 text-white font-bold text-xl -right-5 -top-5 border-black border-2 shadow-close active:translate-x-[3px] active:translate-y-[3px] active:shadow-none'>X</button>
                 <h1 className='self-start font-bold text-2xl'>Sign Up</h1>
                 <div className='flex flex-col w-full gap-4'>
                     <input 

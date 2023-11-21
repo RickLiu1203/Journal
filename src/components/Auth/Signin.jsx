@@ -2,17 +2,22 @@ import {useState} from 'react'
 import {auth, googleProvider} from '../../config/firebase-config'
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword , signInWithPopup, signOut} from 'firebase/auth'
 import { FaGoogle } from "react-icons/fa";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Signin() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const [failure, setFailure] = useState(false);
+
+    const navigate = useNavigate();
+
     const signIn = async () => {
         try{
             await signInWithEmailAndPassword(auth, email, password);
+            navigate('/overview')
         } catch (err ) {
-            console.log('error')
+            setFailure(true);
         }
     
     };
@@ -20,29 +25,38 @@ function Signin() {
     const googleSignIn = async () => {
         try{
             await signInWithPopup(auth, googleProvider);
+            navigate('/overview')
         } catch (err) {
             console.log('error');
         }
     }
 
+    const back = () => {
+        setTimeout(function() {
+            navigate('/')
+          }, 100);
+    }
+
     return (
-        <article className='flex w-screen min-h-screen justify-center items-center bg-tan overflow-scroll'>
-            <div className='flex flex-col p-10 items-center min-h-[550px] h-[65vh] xl:w-1/3 lg:w-1/2 md:w-1/2 sm:w-2/3 w-5/6 gap-4 border-black border-2 rounded-lg shadow-bigcard bg-stone-50 overflow-y-auto'>
+        <article className='flex w-screen min-h-screen justify-center items-center py-10 bg-tan overflow-scroll'>
+            <div className='flex relative flex-col p-10 items-center min-h-[550px] h-[65vh] xl:w-1/3 lg:w-1/2 md:w-1/2 sm:w-2/3 w-5/6 gap-4 border-black border-2 rounded-xl shadow-bigcard bg-stone-50 overflow-visible'>
+                <button onClick={back} className='absolute w-12 h-12 rounded-full bg-red-500 text-white font-bold text-xl -right-5 -top-5 border-black border-2 shadow-close active:translate-x-[3px] active:translate-y-[3px] active:shadow-none'>X</button>
                 <h1 className='self-start font-bold text-2xl'>Sign In</h1>
-                <div className='flex flex-col w-full gap-4'>
+                <div className='flex flex-col items-center w-full gap-4'>
                     <input 
                         placeholder='Email'
                         onChange={(e) => setEmail(e.target.value)}
-                        className='h-12 rounded-md border-black focus:outline-none border-2 placeholder-gray-500 px-3 bg-stone-50'
+                        className='h-12 w-full rounded-md border-black focus:outline-none border-2 placeholder-gray-500 px-3 bg-stone-50'
                     />
                     <input 
                         placeholder='Password'
                         type='password'
                         onChange={(e) => setPassword(e.target.value)}
-                        className='h-12 rounded-md border-black focus:outline-none border-2 placeholder-gray-500 px-3 bg-stone-50'
+                        className='h-12 w-full rounded-md border-black focus:outline-none border-2 placeholder-gray-500 px-3 bg-stone-50'
                     />
+                    {failure && <p className='text-red-600'>Incorrect username or password</p>}
                     <button onClick={signIn} 
-                            className='bg-black text-white h-12 rounded-md hover:bg-gray-800'
+                            className='bg-black text-white h-12 w-full rounded-md hover:bg-gray-800'
                     >
                         Sign In
                     </button>
