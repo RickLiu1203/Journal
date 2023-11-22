@@ -15,9 +15,11 @@ export default {
       colors:{
         'tan': '#f1ece2',
         'ltan': '#fffbf7'
-      }
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    
+  ],
 }
 

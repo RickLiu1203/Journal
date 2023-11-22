@@ -9,6 +9,7 @@ import Landing from './components/Landing';
 import Blog from './components/Blog';
 import Newuser from './components/Auth/Newuser';
 import Overview from './components/Pages/Overview';
+import Journals from './components/Pages/Journals';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,6 +23,7 @@ function App() {
         <Route path="/blog" element={<Blog />}/>
         <Route path="/newuser" element={<Newuser />}/>
         <Route path="/overview" element={<Overview />}/>
+        <Route path="/journals" element={<Journals />}/>
       </Routes>
     </Router>
   )

@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaPlus } from "react-icons/fa";
 
-function Createpost() {
+function Newpost() {
   return (
     <div className='flex flex-col items-center justify-center h-72 w-56 bg-slate-50 addcard'>
         Createpost
@@ -10,4 +10,4 @@ function Createpost() {
   )
 }
 
-export default Createpost
+export default Newpost
