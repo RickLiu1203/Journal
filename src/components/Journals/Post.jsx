@@ -16,8 +16,8 @@ function Post(props) {
       };
 
     return (
-        <div className='flex gap-8 flex-wrap p-20 z-30' onClick={expandPage}>
-            <div className='flex flex-col justify-center bg-ltan h-80 w-64 rounded-xl border-black border-2 shadow-mdcard p-6 pb-5'>
+        <div className='flex gap-8 flex-wrap p-20 z-30'>
+            <div className='flex flex-col justify-center bg-ltan h-80 w-64 rounded-xl border-black border-2 shadow-mdcard p-6 pb-5' onClick={expandPage}>
                 <div className='flex items-center justify-between border-black border-b-2  pb-1 mb-1'>
                     <h1 className='text-xl font-bold'>Nov&#8239;16,&#8239;2023</h1>
                     <button onClick={starred}>{star ? <FaStar size={20} color={'#f59e0b'}/> : <FaRegStar size={20}/>}</button>

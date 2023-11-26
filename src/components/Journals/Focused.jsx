@@ -39,18 +39,11 @@ function Focused(props) {
                         </section>
                         <section className='flex flex-col border-black border-b-4 py-4'>
                             <h2 className='text-xl font-bold'>Highlights</h2>
-                            <ul className='list-decimal list-inside font-bold'>
+                            <ul className='list-disc list-inside font-bold'>
                                 <li className='font-light py-2 border-black border-b-2'>I saw bird</li>
                                 <li className='font-light py-2 border-black border-b-2'>I went to gym</li>
                                 <li className='font-light py-2'>I got a gift from my friend</li>
                             </ul>
-                        </section>
-                        <section className='flex gap-1 flex-col border-black border-b-4 py-4'>
-                            <h2 className='text-xl font-bold'>Rating</h2>
-                            <div className='flex gap-2 items-center'>
-                                <div className='w-7 h-7 border-black border-2 rounded-md bg-lime-500'></div>
-                                <h2 className='text-xl font-medium'>Good</h2>
-                            </div>
                         </section>
                         <section className='flex gap-1 flex-col border-black border-b-4 py-4'>
                             <h2 className='text-xl font-bold'>Goals/Todo</h2>
@@ -61,11 +54,18 @@ function Focused(props) {
                             </ul>
                         </section>
                         <section className='flex gap-1 flex-col border-black border-b-4 py-4'>
+                            <h2 className='text-xl font-bold'>Rating</h2>
+                            <div className='flex gap-2 items-center'>
+                                <div className='w-7 h-7 border-black border-2 rounded-md bg-lime-500'></div>
+                                <h2 className='text-xl font-medium'>Good</h2>
+                            </div>
+                        </section>
+                        <section className='flex gap-1 flex-col border-black border-b-4 py-4'>
                             <h2 className='text-xl font-bold'>Tags</h2>
                             <div className='flex gap-3 items-center font-medium'>
-                                <div className='border-black border-2 rounded-full px-2 bg-amber-100'>Study</div>
-                                <div className='border-black border-2 rounded-full px-2 bg-red-100'>The Boys</div>
-                                <div className='border-black border-2 rounded-full px-2 bg-purple-100'>Girlfriend</div>
+                                <div className='border-black border-2 rounded-full px-2'>Study</div>
+                                <div className='border-black border-2 rounded-full px-2'>The Boys</div>
+                                <div className='border-black border-2 rounded-full px-2'>Girlfriend</div>
                             </div>
                         </section>
                     </article>

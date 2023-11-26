@@ -8,7 +8,9 @@ function Journals() {
 
     const click = () => {
         if (event.currentTarget !== event.target){
-            setClicked(!clicked);
+            clicked ? setTimeout(function() {
+                setClicked(!clicked);
+              }, 100) : setClicked(!clicked);
         }
 
     }

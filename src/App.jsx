@@ -2,9 +2,8 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css'
 
-import Signin from './components/Auth/Signin'
-import Signup from './components/Auth/Signup'
-import Entries from './components/Entries'
+import Signin from './components/Auth/Signin';
+import Signup from './components/Auth/Signup';
 import Landing from './components/Landing';
 import Blog from './components/Blog';
 import Newuser from './components/Auth/Newuser';
